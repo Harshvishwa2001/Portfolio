@@ -4,13 +4,13 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 
-const navbarlink = [
-    { title: "About", path: "#about" },
-    { title: "Projects", path: "#projects" },
-    { title: "Experience", path: "#experience" },
-];
+// const navbarlink = [
+//     { title: "About", path: "#about" },
+//     { title: "Projects", path: "#projects" },
+//     { title: "Experience", path: "#experience" },
+// ];
 
-const Navbar = () => {
+const NavHeaders = () => {
     const [nav, setNav] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -49,7 +49,7 @@ const Navbar = () => {
                 </Link>
 
                 {/* 2. Desktop Navigation with Animated Underline */}
-                <nav className='hidden md:block'>
+                {/* <nav className='hidden md:block'>
                     <ul className='flex items-center gap-10'>
                         {navbarlink.map((link, index) => (
                             <li key={index} className="relative group">
@@ -63,7 +63,7 @@ const Navbar = () => {
                             </li>
                         ))}
                     </ul>
-                </nav>
+                </nav> */}
 
                 {/* 3. Action Button (The "Glitch" Style) */}
                 <div className='flex items-center gap-4'>
@@ -87,11 +87,11 @@ const Navbar = () => {
                             className='absolute top-20 left-6 right-6 bg-black/95 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-10 z-40 md:hidden shadow-2xl'
                         >
                             <ul className='flex flex-col items-center gap-8'>
-                                {navbarlink.map((link, index) => (
+                                {/* {navbarlink.map((link, index) => (
                                     <Link key={index} href={link.path} onClick={() => setNav(false)} className="text-3xl font-black text-white uppercase italic hover:text-[#A186FF]">
                                         {link.title}
                                     </Link>
-                                ))}
+                                ))} */}
                                 <hr className='w-full border-white/10' />
                                 <Link href="#contact" onClick={() => setNav(false)} className='w-full py-4 bg-[#A186FF] text-black text-center font-black rounded-2xl'>
                                     HIRE ME
@@ -105,4 +105,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default NavHeaders;
