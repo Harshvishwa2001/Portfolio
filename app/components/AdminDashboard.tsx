@@ -33,7 +33,7 @@ export default function AdminDashboard() {
         } else {
             setIsLoggedIn(false);
         }
-    }, []);
+    }, );
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();

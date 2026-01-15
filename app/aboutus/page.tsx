@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FiBookOpen, FiUser, FiAward, FiArrowRight, FiCode, FiDownload, FiFileText } from 'react-icons/fi'
+import { FiBookOpen, FiDownload, FiFileText } from 'react-icons/fi'
 import NavHeaders from '../components/NavHeaders'
 import Footer from '../components/Footer'
 import profile from '../../public/profile Harsh.png'
