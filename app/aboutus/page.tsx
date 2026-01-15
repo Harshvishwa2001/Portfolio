@@ -33,7 +33,7 @@ const AboutPage = () => {
                             </div>
 
                             <p className="text-zinc-500 text-xl leading-relaxed max-w-lg italic">
-                                "Passionate developer and strategist focused on bridging the gap between complex backend architecture and fluid user experiences."
+                                Passionate developer and strategist focused on bridging the gap between complex backend architecture and fluid user experiences.
                             </p>
 
                             <div className="flex gap-10 border-t border-white/5 pt-10">
