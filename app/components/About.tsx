@@ -2,12 +2,10 @@
 import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion'
-import { SiReact, SiMongodb, SiNodedotjs, SiExpress, SiNextdotjs, SiTailwindcss, SiTypescript, SiDocker, SiMysql, SiSqlalchemy, SiPostgresql, SiJavascript } from 'react-icons/si'
+import { SiReact, SiMongodb, SiNodedotjs, SiExpress, SiNextdotjs, SiTailwindcss, SiTypescript,  SiMysql, SiJavascript } from 'react-icons/si'
 import book from '../../public/book.png'
 import card from '../../public/card.png'
 import { DiJava } from 'react-icons/di'
-import { GiGClef, GiSaphir } from 'react-icons/gi'
-import { MdAnimation } from 'react-icons/md'
 import { CgVercel } from 'react-icons/cg'
 
 const About = () => {

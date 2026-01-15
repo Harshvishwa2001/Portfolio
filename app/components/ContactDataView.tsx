@@ -74,7 +74,7 @@ export default function ContactDataView() {
                                 </span>
                             </div>
                             <p className={`text-xs truncate italic ${selected?._id === item._id ? 'text-black/70' : 'text-zinc-500'}`}>
-                                "{item.message}"
+                                {item.message}
                             </p>
                             
                             {selected?._id === item._id && (
@@ -134,7 +134,7 @@ export default function ContactDataView() {
                                         DECRYPTED_MESSAGE
                                     </div>
                                     <p className="text-2xl leading-relaxed text-zinc-300 italic font-medium">
-                                        "{selected.message}"
+                                       {selected.message}
                                     </p>
                                 </div>
                             </div>

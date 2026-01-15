@@ -32,7 +32,7 @@ const Footer = () => {
                             <span className='text-[#A186FF]'>the future?</span>
                         </motion.h2>
                         <p className='text-white/40 mt-6 text-lg max-w-md'>
-                            Let's collaborate on your next high-performance digital ecosystem.
+                            Lets collaborate on your next high-performance digital ecosystem.
                         </p>
                     </div>
 

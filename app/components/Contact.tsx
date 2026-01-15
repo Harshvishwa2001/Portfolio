@@ -8,7 +8,7 @@ const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
 
-    async function handleForm(formData: any) {
+    async function handleForm(formData:FormData) {
         setIsSubmitting(true)
         const result = await submitContact(formData)
         setIsSubmitting(false)

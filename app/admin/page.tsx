@@ -37,11 +37,6 @@ export default function AdminPage() {
         }, 1000)
     }
 
-    const handleLogout = () => {
-        localStorage.removeItem('admin_auth')
-        setIsLoggedIn(false)
-    }
-
     if (isCheckingAuth) return <div className="min-h-screen bg-[#09090b]" />
 
     if (isLoggedIn) return <AdminDashboard  />

@@ -1,11 +1,11 @@
 'use client'
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
 import { submitProject } from '@/app/api/projects'
 import { 
-    FiPlus, FiGithub, FiExternalLink, 
+    FiPlus, FiGithub,  
     FiImage, FiType, FiTag, FiLink, FiFileText, FiLoader 
 } from 'react-icons/fi'
+import Image from 'next/image'
 
 const ProjectUploader = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -84,7 +84,7 @@ const ProjectUploader = () => {
                             {/* Visual UI for the file input */}
                             <div className="w-full h-full border-2 border-dashed border-white/10 bg-white/[0.02] rounded-[2.5rem] flex flex-col items-center justify-center gap-4 group-hover:border-[#C3F53C]/40 transition-all overflow-hidden relative">
                                 {formData.imageUrl ? (
-                                    <img src={formData.imageUrl} className="w-full h-full object-cover" alt="Preview" />
+                                    <Image fill src={formData.imageUrl} className="w-full h-full object-cover" alt="Preview" />
                                 ) : (
                                     <div className="text-center">
                                         <FiImage size={48} className="mx-auto text-zinc-800 group-hover:text-zinc-600 transition-colors" />

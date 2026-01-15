@@ -117,7 +117,7 @@ const Project = () => {
                                 </h3>
 
                                 <p className='text-white/50 text-lg leading-relaxed italic'>
-                                    "{project.desc}"
+                                    {project.desc}
                                 </p>
 
                                 <div className='flex flex-wrap gap-2'>

@@ -68,7 +68,7 @@ const NavHeaders = () => {
                 {/* 3. Action Button (The "Glitch" Style) */}
                 <div className='flex items-center gap-4'>
                     <Link href="#contact" className='hidden md:flex px-6 py-2.5 bg-white text-black font-black text-xs uppercase tracking-widest rounded-full hover:bg-[#C3F53C] transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[#C3F53C]/40'>
-                        Let's Talk
+                        Lets Talk
                     </Link>
 
                     {/* Mobile Toggle */}

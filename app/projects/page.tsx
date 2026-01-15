@@ -2,7 +2,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { FiLayers, FiArrowUpRight, FiGithub } from 'react-icons/fi'
 
@@ -90,7 +89,7 @@ const ProjectPage = () => {
                         </h1>
 
                         <p className="max-w-2xl text-white/40 text-lg md:text-2xl font-medium leading-relaxed italic border-l-2 border-white/10 pl-8">
-                            "Transforming complex logic into seamless digital experiences through modern full-stack engineering."
+                            Transforming complex logic into seamless digital experiences through modern full-stack engineering.
                         </p>
                     </header>
 

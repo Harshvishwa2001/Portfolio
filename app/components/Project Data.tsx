@@ -3,16 +3,27 @@ import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { getProjects, deleteProject } from '@/app/api/projects'
 import { FiGithub, FiExternalLink, FiTrash2 } from 'react-icons/fi'
+import Image from 'next/image'
 
 export default function ArchiveView() {
-    const [projects, setProjects] = useState<any[]>([])
+    interface Project {
+        _id: string;
+        title: string;
+        description: string;
+        tags: string;
+        imageUrl: string;
+        codeLink?: string; 
+        launchLink?: string; 
+    }
+
+    const [projects, setProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true)
 
     const loadData = async () => {
         try {
             setLoading(true)
             const res = await getProjects()
-            
+
             if (Array.isArray(res)) {
                 setProjects(res);
             } else if (res && res.projects) {
@@ -51,7 +62,7 @@ export default function ArchiveView() {
                 </div>
             ) : (
                 projects.map((proj, index) => (
-                    <motion.div 
+                    <motion.div
                         key={proj._id}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -68,21 +79,21 @@ export default function ArchiveView() {
                         {/* PROJECT IMAGE */}
                         <div className="w-full lg:w-[550px] aspect-video bg-zinc-900 rounded-[3rem] overflow-hidden border border-white/5 relative z-10">
                             {proj.imageUrl ? (
-                                <img 
-                                    src={proj.imageUrl} 
+                                <Image fill
+                                    src={proj.imageUrl}
                                     alt={proj.title}
-                                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105" 
+                                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
                                 />
                             ) : (
                                 <div className="w-full h-full flex items-center justify-center text-zinc-800 font-mono text-xs">NO_IMAGE_SOURCE</div>
                             )}
-                            
+
                             {/* DELETE BUTTON */}
-                            <button 
+                            <button
                                 onClick={() => confirmDelete(proj._id)}
                                 className="absolute top-6 right-6 p-4 bg-red-600/20 text-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-md hover:bg-red-600 hover:text-white z-30"
                             >
-                                <FiTrash2 size={20}/>
+                                <FiTrash2 size={20} />
                             </button>
                         </div>
 
@@ -96,9 +107,9 @@ export default function ArchiveView() {
                                     {proj.title || "UNTITLED_PROJECT"}
                                 </h2>
                             </div>
-                            
+
                             <p className="text-zinc-500 text-xl leading-relaxed italic font-medium max-w-2xl">
-                                "{proj.description || "No description provided."}"
+                                {proj.description || "No description provided."}
                             </p>
 
                             {/* TAGS */}
@@ -117,7 +128,7 @@ export default function ArchiveView() {
                                 {proj.codeLink && (
                                     <a href={proj.codeLink} target="_blank" className="flex items-center gap-3 text-zinc-500 hover:text-white transition-colors group/link">
                                         <div className="p-3 bg-zinc-900 rounded-full group-hover/link:bg-white group-hover/link:text-black transition-all">
-                                            <FiGithub size={20}/>
+                                            <FiGithub size={20} />
                                         </div>
                                         <span className="font-mono text-xs uppercase tracking-[0.3em]">CODE</span>
                                     </a>
@@ -126,7 +137,7 @@ export default function ArchiveView() {
                                 {proj.launchLink && (
                                     <a href={proj.launchLink} target="_blank" className="flex items-center gap-3 text-zinc-500 hover:text-[#C3F53C] transition-colors group/link">
                                         <div className="p-3 bg-zinc-900 rounded-full group-hover/link:bg-[#C3F53C] group-hover/link:text-black transition-all">
-                                            <FiExternalLink size={20}/>
+                                            <FiExternalLink size={20} />
                                         </div>
                                         <span className="font-mono text-xs uppercase tracking-[0.3em]">LAUNCH</span>
                                     </a>

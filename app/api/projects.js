@@ -49,6 +49,7 @@ export async function deleteProject(id) {
         revalidatePath('/admin');
         return { success: true };
     } catch (error) {
+        console.log(error)
         return { success: false };
     }
 }

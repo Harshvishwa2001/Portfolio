@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FiArrowUpRight, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi'
-import { SiJavascript, SiMongodb, SiNextdotjs, SiNodedotjs, SiReact, SiTailwindcss } from 'react-icons/si'
+import { SiJavascript, SiMongodb, SiNodedotjs, SiReact, SiTailwindcss } from 'react-icons/si'
 import { RiNextjsFill } from 'react-icons/ri'
 
 // Ensure your image path is correct
@@ -12,6 +12,7 @@ import { DiJava } from 'react-icons/di'
 
 const Hero = () => {
     const [time, setTime] = useState('')
+    console.log(time)
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -120,10 +121,10 @@ const Hero = () => {
                                     <div className='w-2.5 h-2.5 rounded-full bg-[#27C93F]' />
                                 </div>
                                 <code className='text-[12px] font-mono leading-relaxed block'>
-                                    <p className='flex gap-2'><span className='text-white/40'>1</span><span className='text-[#A186FF]'>status:</span> <span className='text-[#C3F53C]'>"Available"</span></p>
-                                    <p className='flex gap-2'><span className='text-white/40'>2</span><span className='text-[#A186FF]'>role:</span> <span className='text-[#C3F53C]'>"Junior Developer"</span></p>
-                                    <p className='flex gap-2'><span className='text-white/40'>3</span><span className='text-[#A186FF]'>stack:</span> <span className='text-[#C3F53C]'>"MERN"</span></p>
-                                    <p className='flex gap-2'><span className='text-white/40'>4</span><span className='text-[#A186FF]'>focus:</span> <span className='text-[#C3F53C]'>"Full Stack Developer"</span><span className='w-2 h-4 bg-[#C3F53C] animate-pulse ml-1' /></p>
+                                    <p className='flex gap-2'><span className='text-white/40'>1</span><span className='text-[#A186FF]'>status:</span> <span className='text-[#C3F53C]'>`Available`</span></p>
+                                    <p className='flex gap-2'><span className='text-white/40'>2</span><span className='text-[#A186FF]'>role:</span> <span className='text-[#C3F53C]'>`Junior Developer`</span></p>
+                                    <p className='flex gap-2'><span className='text-white/40'>3</span><span className='text-[#A186FF]'>stack:</span> <span className='text-[#C3F53C]'>`MERN`</span></p>
+                                    <p className='flex gap-2'><span className='text-white/40'>4</span><span className='text-[#A186FF]'>focus:</span> <span className='text-[#C3F53C]'>`Full Stack Developer`</span><span className='w-2 h-4 bg-[#C3F53C] animate-pulse ml-1' /></p>
                                 </code>
                             </motion.div>
 
