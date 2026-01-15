@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion'
-import { SiReact, SiMongodb, SiNodedotjs, SiExpress, SiNextdotjs, SiTailwindcss, SiTypescript,  SiMysql, SiJavascript } from 'react-icons/si'
+import { SiReact, SiMongodb, SiNodedotjs, SiExpress, SiNextdotjs, SiTailwindcss, SiTypescript, SiMysql, SiJavascript } from 'react-icons/si'
 import book from '../../public/book.png'
 import card from '../../public/card.png'
 import { DiJava } from 'react-icons/di'
@@ -121,6 +121,32 @@ const About = () => {
                         </p>
                     </div>
                 </motion.div>
+
+                <div className="flex justify-center mt-24 mb-12">
+                    <a href="/aboutus" className="group relative">
+                        {/* Glow Effect Layer */}
+                        <div className="absolute -inset-0.5 bg-[#C3F53C] rounded-full blur opacity-20 group-hover:opacity-60 transition duration-500"></div>
+
+                        {/* The Button */}
+                        <button className="relative px-12 py-4 bg-[#030303] border border-white/10 text-white rounded-full flex items-center gap-3 transition-all duration-300 group-hover:border-white/30">
+                            <span className="text-xs font-black uppercase tracking-[0.3em]">
+                                See More About me
+                            </span>
+
+                            {/* Minimal Icon */}
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={3}
+                                stroke="currentColor"
+                                className="w-4 h-4 text-[#C3F53C] group-hover:translate-x-1 transition-transform duration-300"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </button>
+                    </a>
+                </div>
 
             </div>
         </section>
