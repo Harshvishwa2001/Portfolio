@@ -7,7 +7,8 @@ import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 const navbarlink = [
     { title: "About", path: "#about" },
     { title: "Projects", path: "#projects" },
-    { title: "Experience", path: "#experience" },
+    { title: "Skills", path: "#skills" },
+    { title: "Contact", path: "#contact" },
 ];
 
 const Navbar = () => {

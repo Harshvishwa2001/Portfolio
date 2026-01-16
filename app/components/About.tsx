@@ -2,11 +2,14 @@
 import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion'
-import { SiReact, SiMongodb, SiNodedotjs, SiExpress, SiNextdotjs, SiTailwindcss, SiTypescript, SiMysql, SiJavascript } from 'react-icons/si'
+import {
+    SiReact, SiMongodb, SiNodedotjs, SiExpress, SiNextdotjs,
+    SiTailwindcss, SiTypescript, SiMysql, SiJavascript, SiFramer
+} from 'react-icons/si'
 import book from '../../public/book.png'
-import card from '../../public/card.png'
-import { DiJava } from 'react-icons/di'
 import { CgVercel } from 'react-icons/cg'
+import { HiOutlineTerminal } from 'react-icons/hi'
+import { DiJava } from 'react-icons/di'
 
 const About = () => {
     return (
@@ -35,27 +38,22 @@ const About = () => {
             {/* --- 2. BENTO GRID SYSTEM --- */}
             <div className='grid grid-cols-1 md:grid-cols-12 gap-6'>
 
-                {/* Education Box */}
+                {/* Academic Background - FIXED: Replaced 3D Book with Glassmorphism Cap */}
                 <motion.div
                     whileHover={{ y: -5 }}
                     className='md:col-span-8 group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] overflow-hidden'
                 >
-                    <motion.div
-                        whileHover={{ y: -5 }}
-                        className='md:col-span-8 group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] overflow-hidden'
-                    >
-                        <div className='absolute inset-0 bg-gradient-to-br from-[#A186FF]/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500'></div>
-                        <div className='p-10 flex flex-col md:flex-row items-center gap-10 relative z-10'>
-
-                            <Image src={book} alt='Education' className='w-40 h-40 object-contain drop-shadow-[0_0_15px_rgba(161,134,255,0.5)]' />
-                            <div className='flex-1 text-center md:text-left'>
-                                <h2 className='text-3xl text-white font-black uppercase italic'>Academic <span className='text-[#A186FF]'>Background</span></h2>
-                                <p className='text-white/50 mt-4 text-lg leading-relaxed'>
-                                    <span className='text-white font-bold'>MCA Graduate from Thakur College</span>. I specialized in advanced data structures and architectural patterns, bridging the gap between mathematical logic and scalable cloud systems.
-                                </p>
-                            </div>
+                    <div className='absolute inset-0 bg-gradient-to-br from-[#A186FF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500'></div>
+                    <div className='p-10 flex flex-col md:flex-row items-center gap-10 relative z-10'>
+                        {/* Technical Icon Wrapper */}
+                        <Image src={book} alt='Education' className='w-40 h-40 object-contain drop-shadow-[0_0_15px_rgba(161,134,255,0.5)]' />
+                        <div className='flex-1 text-center md:text-left'>
+                            <h2 className='text-3xl text-white font-black uppercase italic'>Academic <span className='text-[#A186FF]'>Background</span></h2>
+                            <p className='text-white/50 mt-4 text-lg leading-relaxed'>
+                                <span className='text-white font-bold'>MCA Graduate from Thakur College</span>. I specialized in advanced data structures and architectural patterns, bridging the gap between mathematical logic and scalable cloud systems.
+                            </p>
                         </div>
-                    </motion.div>
+                    </div>
                 </motion.div>
 
                 {/* Technical Stack Box */}
@@ -70,34 +68,36 @@ const About = () => {
                             Mastering the flow of data from MongoDB to React with ultra-fast Node.js middleware.
                         </p>
                     </div>
-                    <div className='flex gap-3 mt-6'>
+                    <div className='flex flex-wrap gap-4 mt-6'>
                         <SiReact className='text-black text-2xl' />
                         <SiMongodb className='text-black text-2xl' />
                         <SiNodedotjs className='text-black text-2xl' />
                         <SiNextdotjs className='text-black text-2xl' />
                         <SiExpress className='text-black text-2xl' />
-                        <SiMysql className='text-black text-2xl' />
-                        <SiNextdotjs className='text-black text-2xl' />
-                        <SiJavascript className='text-black text-2xl' />
                         <DiJava className='text-black text-2xl' />
+                        <SiJavascript className='text-black text-2xl' />
                     </div>
                 </motion.div>
 
-                {/* Experience Box */}
+                {/* Experience Box - FIXED: Replaced Credit Card with Terminal Icon */}
                 <motion.div
                     whileHover={{ y: -5 }}
                     className='md:col-span-5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 relative overflow-hidden group'
                 >
                     <div className='flex flex-col h-full'>
                         <div className='flex items-center gap-4 mb-6'>
-                            <Image src={card} alt='Exp' className='w-12 h-12 object-contain' />
+                            <div className='w-12 h-12 rounded-xl bg-[#C3F53C]/10 border border-[#C3F53C]/20 flex items-center justify-center text-[#C3F53C] text-2xl'>
+                                <HiOutlineTerminal />
+                            </div>
                             <div>
                                 <h3 className='text-white font-black uppercase text-xl italic'>Runtime Solution PVT LTD</h3>
                                 <p className='text-[#C3F53C] text-[10px] font-bold tracking-[0.2em] uppercase'>Junior Full Stack Developer</p>
                             </div>
                         </div>
                         <p className='text-white/40 text-sm leading-relaxed'>
-                            Engineered a modular e-commerce engine that reduced page load times by 40%. Implemented secure payment gateways and dynamic inventory management systems.
+                            Developed high-performance e-commerce modules using React, Node.js, and MongoDB, focusing on reusable component architecture and scalable API design.
+                            Developed a dynamic inventory management system with real-time synchronization between the database and frontend, preventing overselling and improving stock accuracy.
+                            Built complex backend logic for real-time inventory tracking and automated order processing, streamlining the supply chain for end-users.
                         </p>
                     </div>
                 </motion.div>
@@ -107,12 +107,12 @@ const About = () => {
                     whileHover={{ y: -5 }}
                     className='md:col-span-7 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 relative overflow-hidden'
                 >
-                    <div className='grid grid-cols-2 md:grid-cols-5 gap-1 relative z-10'>
+                    <div className='grid grid-cols-3 md:grid-cols-5 gap-4 relative z-10'>
                         <SkillItem icon={<SiTypescript />} name="TS" />
                         <SkillItem icon={<SiTailwindcss />} name="Tailwind" />
                         <SkillItem icon={<CgVercel />} name="Vercel" />
-                        <SkillItem icon={"GSAP"} name="GSAP" />
-                        <SkillItem icon={<SiExpress />} name="Express" />
+                        <SkillItem icon={<SiFramer />} name="Framer" />
+                        <SkillItem icon={<SiMysql />} name="MySQL" />
                     </div>
                     <div className='mt-8 pt-8 border-t border-white/5'>
                         <h2 className='text-white text-xl font-black uppercase italic mb-2'>The Arsenal</h2>
@@ -121,46 +121,29 @@ const About = () => {
                         </p>
                     </div>
                 </motion.div>
+            </div>
 
-                <div className="flex justify-center mt-24 mb-12">
-                    <a href="/aboutus" className="group relative">
-                        {/* Glow Effect Layer */}
-                        <div className="absolute -inset-0.5 bg-[#C3F53C] rounded-full blur opacity-20 group-hover:opacity-60 transition duration-500"></div>
-
-                        {/* The Button */}
-                        <button className="relative px-12 py-4 bg-[#030303] border border-white/10 text-white rounded-full flex items-center gap-3 transition-all duration-300 group-hover:border-white/30">
-                            <span className="text-xs font-black uppercase tracking-[0.3em]">
-                                See More About me
-                            </span>
-
-                            {/* Minimal Icon */}
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={3}
-                                stroke="currentColor"
-                                className="w-4 h-4 text-[#C3F53C] group-hover:translate-x-1 transition-transform duration-300"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                        </button>
-                    </a>
-                </div>
-
+            {/* CTA SECTION */}
+            <div className="flex justify-center mt-24">
+                <a href="/aboutus" className="group relative">
+                    <div className="absolute -inset-0.5 bg-[#C3F53C] rounded-full blur opacity-20 group-hover:opacity-60 transition duration-500"></div>
+                    <button className="relative px-12 py-4 bg-[#030303] border border-white/10 text-white rounded-full flex items-center gap-3 transition-all duration-300 group-hover:border-white/30">
+                        <span className="text-xs font-black uppercase tracking-[0.3em]">See More About me</span>
+                        <svg viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-4 h-4 text-[#C3F53C] group-hover:translate-x-1 transition-transform">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </button>
+                </a>
             </div>
         </section>
     )
 }
 
-const SkillItem = ({ icon: Icon, name }: { icon: React.ReactNode; name: string }) => (
+const SkillItem = ({ icon, name }: { icon: React.ReactNode; name: string }) => (
     <div className='flex flex-col items-center gap-3 group cursor-pointer'>
-        {/* Animated Icon Container */}
-        <div className='w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-white/80 group-hover:bg-[#C3F53C] group-hover:text-black group-hover:shadow-[0_0_20px_rgba(195,245,60,0.4)] transition-all duration-300 transform group-hover:-translate-y-1'>
-            {Icon}
+        <div className='w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-3xl text-white/80 group-hover:bg-[#C3F53C] group-hover:text-black group-hover:shadow-[0_0_20px_rgba(195,245,60,0.4)] transition-all duration-300 transform group-hover:-translate-y-1'>
+            {icon}
         </div>
-
-        {/* Label with technical tracking */}
         <span className='text-[10px] font-black text-white/50 uppercase tracking-[0.3em] group-hover:text-white transition-colors duration-300'>
             {name}
         </span>

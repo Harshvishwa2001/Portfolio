@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { getProjects, deleteProject } from '@/app/api/projects'
-import { FiGithub, FiExternalLink, FiTrash2 } from 'react-icons/fi'
+import { FiGithub, FiExternalLink, FiTrash2, FiEdit3 } from 'react-icons/fi'
 import Image from 'next/image'
+import Link from 'next/link' // Import Link for navigation
 
 export default function ArchiveView() {
     interface Project {
@@ -88,13 +89,24 @@ export default function ArchiveView() {
                                 <div className="w-full h-full flex items-center justify-center text-zinc-800 font-mono text-xs">NO_IMAGE_SOURCE</div>
                             )}
 
-                            {/* DELETE BUTTON */}
-                            <button
-                                onClick={() => confirmDelete(proj._id)}
-                                className="absolute top-6 right-6 p-4 bg-red-600/20 text-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-md hover:bg-red-600 hover:text-white z-30"
-                            >
-                                <FiTrash2 size={20} />
-                            </button>
+                            {/* --- ACTION OVERLAYS (TOP RIGHT) --- */}
+                            <div className="absolute top-6 right-6 flex flex-col gap-3 opacity-0 group-hover:opacity-100 transition-opacity z-30">
+                                {/* EDIT BUTTON */}
+                                <Link
+                                    href={`/admin/edit/${proj._id}`} // Assuming your edit route is here
+                                    className="p-4 bg-white/10 text-white rounded-full backdrop-blur-md hover:bg-[#C3F53C] hover:text-black transition-all"
+                                >
+                                    <FiEdit3 size={20} />
+                                </Link>
+
+                                {/* DELETE BUTTON */}
+                                <button
+                                    onClick={() => confirmDelete(proj._id)}
+                                    className="p-4 bg-red-600/20 text-red-500 rounded-full backdrop-blur-md hover:bg-red-600 hover:text-white transition-all"
+                                >
+                                    <FiTrash2 size={20} />
+                                </button>
+                            </div>
                         </div>
 
                         {/* PROJECT DETAILS */}
@@ -108,7 +120,7 @@ export default function ArchiveView() {
                                 </h2>
                             </div>
 
-                            <p className="text-zinc-500 text-xl leading-relaxed italic font-medium max-w-2xl">
+                            <p className="text-zinc-500 text-xl leading-relaxed italic font-medium max-w-2xl line-clamp-3">
                                 {proj.description || "No description provided."}
                             </p>
 

@@ -58,7 +58,7 @@ const Skills = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
-                                    className='relative z-10'
+                                    className='relative z-10' 
                                 >
                                     <div
                                         className='text-8xl mb-6 transition-all duration-500'

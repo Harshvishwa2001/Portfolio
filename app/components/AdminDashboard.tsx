@@ -110,7 +110,7 @@ export default function AdminDashboard() {
             <aside className="w-72 border-r border-white/5 bg-[#0A0A0A] p-8 flex flex-col">
                 <div className="flex items-center gap-3 mb-12 px-2">
                     <FiShield className="text-[#C3F53C] text-2xl" />
-                    <span className="font-black tracking-tighter uppercase text-lg">Control_Center</span>
+                    <span className="font-black tracking-tighter uppercase text-lg">Admin_Center</span>
                 </div>
 
                 <nav className="flex-1 space-y-3">
