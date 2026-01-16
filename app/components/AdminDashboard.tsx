@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { FiMail, FiUpload, FiDatabase, FiShield, FiLogOut, FiLock, FiKey } from 'react-icons/fi'
@@ -18,22 +18,22 @@ export default function AdminDashboard() {
     // --- SESSION CONFIG ---
     const SESSION_DURATION = 6 * 60 * 60 * 1000; // 6 Hours in milliseconds
 
-    // useEffect(() => {
-    //     const sessionData = localStorage.getItem('admin_session');
-    //     if (sessionData) {
-    //         const { timestamp } = JSON.parse(sessionData);
-    //         const now = new Date().getTime();
+    useEffect(() => {
+        const sessionData = localStorage.getItem('admin_session');
+        if (sessionData) {
+            const { timestamp } = JSON.parse(sessionData);
+            const now = new Date().getTime();
 
-    //         if (now - timestamp < SESSION_DURATION) {
-    //             setIsLoggedIn(true);
-    //         } else {
-    //             localStorage.removeItem('admin_session');
-    //             setIsLoggedIn(false);
-    //         }
-    //     } else {
-    //         setIsLoggedIn(false);
-    //     }
-    // }, );
+            if (now - timestamp < SESSION_DURATION) {
+                setIsLoggedIn(true);
+            } else {
+                localStorage.removeItem('admin_session');
+                setIsLoggedIn(false);
+            }
+        } else {
+            setIsLoggedIn(false);
+        }
+    }, [SESSION_DURATION]);
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
