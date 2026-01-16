@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { FiArrowUpRight, FiGithub, FiInstagram, FiLinkedin, FiTwitter } from 'react-icons/fi'
+import { FiArrowUpRight, FiGithub, FiInstagram, FiLinkedin } from 'react-icons/fi'
 import { SiJavascript, SiMongodb, SiNodedotjs, SiReact, SiTailwindcss } from 'react-icons/si'
 import { RiNextjsFill } from 'react-icons/ri'
 

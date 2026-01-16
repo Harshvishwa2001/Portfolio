@@ -3,14 +3,20 @@ import ProjectUploader from "@/app/components/ProjectDataView";
 import Link from "next/link";
 import { FiArrowLeft, FiShield, FiActivity } from "react-icons/fi";
 
-export default async function EditProjectPage({ 
-    params 
-}: { 
-    params: Promise<{ id: string }> 
+export default async function EditProjectPage({
+    params
+}: {
+    params: Promise<{ id: string }>
 }) {
     const { id } = await params;
     const allProjects = await getProjects();
-    const projectToEdit = allProjects.find((p: any) => p._id === id);
+    // 1. Define the interface
+    interface Project {
+        _id: string;
+        title: string;
+        path?: string;
+    }
+    const projectToEdit = allProjects.find((p: Project) => p._id === id);
 
     if (!projectToEdit) {
         return (
@@ -34,8 +40,8 @@ export default async function EditProjectPage({
             {/* --- TOP NAVIGATION BAR --- */}
             <nav className="border-b border-white/5 bg-[#050505]/80 backdrop-blur-md sticky top-0 z-50">
                 <div className="max-w-[1400px] mx-auto px-8 h-20 flex items-center justify-between">
-                    <Link 
-                        href="/admin" 
+                    <Link
+                        href="/admin"
                         className="group flex items-center gap-3 text-zinc-500 hover:text-white transition-all font-mono text-[10px] uppercase tracking-widest"
                     >
                         <div className="p-2 border border-zinc-800 group-hover:border-[#C3F53C] rounded-lg transition-colors">
@@ -59,15 +65,15 @@ export default async function EditProjectPage({
             <div className="max-w-[1400px] mx-auto pt-12 pb-24 px-8">
                 {/* Visual Accent */}
                 <div className="flex items-center gap-4 mb-2">
-                   <div className="h-[1px] w-12 bg-[#C3F53C]"></div>
-                   <span className="text-[#C3F53C] font-mono text-[10px] uppercase tracking-[0.5em]">Mode: Reconfiguration</span>
+                    <div className="h-[1px] w-12 bg-[#C3F53C]"></div>
+                    <span className="text-[#C3F53C] font-mono text-[10px] uppercase tracking-[0.5em]">Mode: Reconfiguration</span>
                 </div>
 
                 {/* The Form Component */}
                 <div className="mt-4">
-                    <ProjectUploader 
-                        isEditMode={true} 
-                        initialData={projectToEdit} 
+                    <ProjectUploader
+                        isEditMode={true}
+                        initialData={projectToEdit}
                     />
                 </div>
             </div>

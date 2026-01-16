@@ -1,14 +1,25 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { submitProject, updateProject } from '@/app/api/projects' // Ensure updateProject is exported
+import { submitProject, updateProject } from '@/app/api/projects'
 import {
     FiPlus, FiGithub, FiCheck,
-    FiImage, FiType, FiTag, FiLink, FiFileText, FiLoader, FiEdit3
+    FiImage, FiType, FiTag, FiLink, FiFileText, FiLoader
 } from 'react-icons/fi'
 import Image from 'next/image'
 
+// Proper Type Definitions
+export interface Project {
+    _id?: string;
+    title: string;
+    description: string;
+    tags: string | string[];
+    imageUrl: string;
+    codeLink?: string;
+    launchLink?: string;
+}
+
 interface ProjectUploaderProps {
-    initialData?: any; // Pass the project object here if editing
+    initialData?: Project;
     isEditMode?: boolean;
 }
 
@@ -29,7 +40,7 @@ const ProjectUploader = ({ initialData, isEditMode = false }: ProjectUploaderPro
             setFormData({
                 title: initialData.title || '',
                 description: initialData.description || '',
-                // FIX: Check if tags is an array before calling .join()
+                // Safety check: Convert array to string for the input field
                 tags: Array.isArray(initialData.tags)
                     ? initialData.tags.join(', ')
                     : (initialData.tags || ''),
@@ -61,11 +72,11 @@ const ProjectUploader = ({ initialData, isEditMode = false }: ProjectUploaderPro
             if (isEditMode && initialData?._id) {
                 // UPDATE LOGIC
                 res = await updateProject(initialData._id, formData);
-                if (res.success) alert("INTEL UPDATED SUCCESSFULLY");
+                if (res?.success) alert("INTEL UPDATED SUCCESSFULLY");
             } else {
                 // CREATE LOGIC
                 res = await submitProject(formData);
-                if (res.success) {
+                if (res?.success) {
                     alert("INTEL COMMITTED TO DATABASE");
                     setFormData({ title: '', description: '', tags: '', imageUrl: '', codeLink: '', launchLink: '' });
                 }
@@ -80,8 +91,6 @@ const ProjectUploader = ({ initialData, isEditMode = false }: ProjectUploaderPro
 
     return (
         <div className="min-h-screen bg-[#050505] text-white p-8 font-sans">
-
-            {/* --- HEADER --- */}
             <div className="mb-12 border-b border-white/5 pb-8">
                 <h1 className="text-[#C3F53C] text-5xl font-black italic tracking-tighter uppercase">
                     {isEditMode ? 'MODIFY_INTEL' : 'UPLOAD_INTEL'}
@@ -91,16 +100,13 @@ const ProjectUploader = ({ initialData, isEditMode = false }: ProjectUploaderPro
                 </p>
             </div>
 
-            {/* --- FORM --- */}
             <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl">
-
-                {/* LEFT COLUMN: VISUALS & IDENTITY */}
+                {/* LEFT COLUMN */}
                 <div className="space-y-8">
                     <div className="space-y-3">
                         <label className="flex items-center gap-2 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
                             <FiImage /> PROJECT SNAPSHOT
                         </label>
-
                         <div className="relative group aspect-video">
                             <input
                                 type="file"
@@ -108,16 +114,19 @@ const ProjectUploader = ({ initialData, isEditMode = false }: ProjectUploaderPro
                                 onChange={handleImageChange}
                                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
                             />
-
                             <div className="w-full h-full border-2 border-dashed border-white/10 bg-white/[0.02] rounded-[2.5rem] flex flex-col items-center justify-center gap-4 group-hover:border-[#C3F53C]/40 transition-all overflow-hidden relative">
                                 {formData.imageUrl ? (
-                                    <Image fill src={formData.imageUrl} className="w-full h-full object-cover" alt="Preview" />
+                                    <Image 
+                                        fill 
+                                        src={formData.imageUrl} 
+                                        className="w-full h-full object-cover" 
+                                        alt="Preview" 
+                                        unoptimized // Use this if using base64 strings
+                                    />
                                 ) : (
                                     <div className="text-center">
                                         <FiImage size={48} className="mx-auto text-zinc-800 group-hover:text-zinc-600 transition-colors" />
-                                        <p className="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.2em] mt-4">
-                                            CLICK OR DRAG RAW IMAGE
-                                        </p>
+                                        <p className="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.2em] mt-4">CLICK OR DRAG RAW IMAGE</p>
                                     </div>
                                 )}
                             </div>
@@ -138,7 +147,7 @@ const ProjectUploader = ({ initialData, isEditMode = false }: ProjectUploaderPro
                     </div>
                 </div>
 
-                {/* RIGHT COLUMN: METADATA */}
+                {/* RIGHT COLUMN */}
                 <div className="space-y-8">
                     <div className="space-y-3">
                         <label className="flex items-center gap-2 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
@@ -189,7 +198,6 @@ const ProjectUploader = ({ initialData, isEditMode = false }: ProjectUploaderPro
                         />
                     </div>
 
-                    {/* SUBMIT BUTTON */}
                     <button
                         type="submit"
                         disabled={isSubmitting}

@@ -1,11 +1,10 @@
 'use client'
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FiActivity, FiBookOpen, FiCpu, FiDownload, FiFileText } from 'react-icons/fi'
+import { FiActivity, FiCpu } from 'react-icons/fi'
 import NavHeaders from '../components/NavHeaders'
 import Footer from '../components/Footer'
 import profile from '../../public/profile Harsh.png'
-import profile1 from '../../public/profileharsh.png'
 import Image from 'next/image'
 import Skills from '../components/Skills'
 import Experience from '../components/Experience'
@@ -165,7 +164,7 @@ const AboutPage = () => {
                                                     </span>
                                                     {edu.status && (
                                                         <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-tighter">
-                                                    // {edu.status}
+                                                            {edu.status}
                                                         </span>
                                                     )}
                                                 </div>
@@ -202,7 +201,7 @@ const AboutPage = () => {
                 </section>
 
                 <section>
-                    <ResumeCTA/>    
+                    <ResumeCTA />
                 </section>
             </div>
             <Footer />
