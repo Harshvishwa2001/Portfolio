@@ -2,13 +2,14 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { FiArrowUpRight, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi'
+import { FiArrowUpRight, FiGithub, FiInstagram, FiLinkedin, FiTwitter } from 'react-icons/fi'
 import { SiJavascript, SiMongodb, SiNodedotjs, SiReact, SiTailwindcss } from 'react-icons/si'
 import { RiNextjsFill } from 'react-icons/ri'
 
 // Ensure your image path is correct
 import profile from '../../public/profile Harsh.png'
 import { DiJava } from 'react-icons/di'
+import Link from 'next/link'
 
 const Hero = () => {
     const [time, setTime] = useState('')
@@ -20,6 +21,12 @@ const Hero = () => {
         }, 1000)
         return () => clearInterval(timer)
     }, [])
+
+    const socials = [
+        { Icon: FiGithub, href: "https://github.com/Harshvishwa2001" },
+        { Icon: FiLinkedin, href: "https://www.linkedin.com/in/harsh-vishwa2001/" },
+        { Icon: FiInstagram, href: "https://www.instagram.com/harshhv__" },
+    ];
 
     return (
         <section className='relative min-h-screen w-full bg-[#050505] text-white p-6 md:p-12 overflow-hidden flex items-center'>
@@ -68,22 +75,34 @@ const Hero = () => {
                             </p>
 
                             <div className='flex flex-wrap gap-4 mt-12'>
-                                <motion.button
-                                    whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(195, 245, 60, 0.4)" }}
-                                    className='px-10 py-5 bg-white text-black rounded-2xl font-black text-sm flex items-center gap-3 transition-all'
-                                >
-                                    START A PROJECT <FiArrowUpRight size={20} />
-                                </motion.button>
+                                <Link href={'#contact'}>
+                                    <motion.button
+                                        whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(195, 245, 60, 0.4)" }}
+                                        className='px-10 py-5 bg-white text-black rounded-2xl font-black text-sm flex items-center gap-3 transition-all'
+                                    >
+                                        START A PROJECT <FiArrowUpRight size={20} />
+                                    </motion.button>
+                                </Link>
 
                                 <div className='flex gap-2'>
-                                    {[FiGithub, FiLinkedin, FiTwitter].map((Icon, i) => (
-                                        <motion.button
+                                    {socials.map(({ Icon, href }, i) => (
+                                        <Link
                                             key={i}
-                                            whileHover={{ y: -5, backgroundColor: "rgba(255,255,255,0.1)", borderColor: "#A186FF" }}
-                                            className='w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all'
+                                            href={href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                         >
-                                            <Icon size={20} />
-                                        </motion.button>
+                                            <motion.button
+                                                whileHover={{
+                                                    y: -5,
+                                                    backgroundColor: "rgba(255,255,255,0.1)",
+                                                    borderColor: "#A186FF",
+                                                    boxShadow: "0 10px 20px rgba(161, 134, 255, 0.2)"
+                                                }}
+                                                className='w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all'>
+                                                <Icon size={22} />
+                                            </motion.button>
+                                        </Link>
                                     ))}
                                 </div>
                             </div>
