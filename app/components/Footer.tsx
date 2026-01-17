@@ -1,7 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { FaInstagram, FaLinkedin, FaTwitter, FaGithub, FaArrowUp } from 'react-icons/fa';
+import { FaInstagram, FaLinkedin, FaGithub, FaArrowUp } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Footer = () => {
     const [year, setYear] = useState<number | null>(null);
@@ -14,6 +15,11 @@ const Footer = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    const socials = [
+        { Icon: FaGithub, href: "https://github.com/Harshvishwa2001" },
+        { Icon: FaLinkedin, href: "https://www.linkedin.com/in/harsh-vishwa2001/" },
+        { Icon: FaInstagram, href: "https://www.instagram.com/harshhv__" },
+    ];
     return (
         <footer className='relative bg-[#030303] pt-24 pb-12 px-6 overflow-hidden'>
             {/* Background Decorative Element */}
@@ -23,7 +29,7 @@ const Footer = () => {
                 {/* Upper Section: The Big CTA */}
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-end'>
                     <div>
-                        <motion.h2 
+                        <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             className='text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] uppercase'
@@ -37,12 +43,12 @@ const Footer = () => {
                     </div>
 
                     <div className='flex flex-col items-start lg:items-end gap-6'>
-                        <a href="mailto:hello@harsh.dev" className='group relative px-10 py-5 bg-[#C3F53C] text-black font-black uppercase tracking-tighter rounded-2xl overflow-hidden'>
+                        <a href="mailto:harshhvdev@gmail.com" className='group relative px-10 py-5 bg-[#C3F53C] text-black font-black uppercase tracking-tighter rounded-2xl overflow-hidden'>
                             <span className='relative z-10'>Start a Project</span>
-                            <motion.div 
-                                whileHover={{ scale: 15 }} 
+                            <motion.div
+                                whileHover={{ scale: 15 }}
                                 transition={{ duration: 0.5 }}
-                                className='absolute top-0 left-0 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-20 transition-opacity' 
+                                className='absolute top-0 left-0 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-20 transition-opacity'
                             />
                         </a>
                     </div>
@@ -53,31 +59,41 @@ const Footer = () => {
                     {/* Status Card */}
                     <div className='p-8 bg-white/5 rounded-[2rem] border border-white/5 flex flex-col justify-between h-[200px]'>
                         <div className='flex items-center gap-2'>
-                            <span className='w-2 h-2 rounded-full bg-[#C3F53C] animate-pulse'></span>
-                            <span className='text-[10px] font-bold text-white/40 uppercase tracking-widest'>Status</span>
+                            <span className='w-2 h-2 rounded-full bg-[#33ff00] animate-pulse'></span>
+                            <span className='text-[10px] font-bold text-white/60 uppercase tracking-widest'>Status</span>
                         </div>
-                        <h3 className='text-xl font-bold text-white uppercase italic'>Available for <br/> Freelance</h3>
+                        <h3 className='text-xl font-bold text-white uppercase italic'>Available for <br /> Freelance</h3>
                     </div>
 
                     {/* Navigation Card */}
                     <div className='p-8 bg-white/5 rounded-[2rem] border border-white/5 h-[200px]'>
-                        <span className='text-[10px] font-bold text-white/40 uppercase tracking-widest block mb-6'>Explore</span>
+                        <span className='text-[10px] font-bold text-white/60 uppercase tracking-widest block mb-6'>Explore</span>
                         <div className='grid grid-cols-2 gap-4'>
                             <a href="#about" className='text-white hover:text-[#A186FF] transition-colors'>About</a>
-                            <a href="#work" className='text-white hover:text-[#A186FF] transition-colors'>Work</a>
-                            <a href="#stack" className='text-white hover:text-[#A186FF] transition-colors'>Stack</a>
-                            <a href="#contact" className='text-white hover:text-[#A186FF] transition-colors'>Contact</a>
+                            <a href="#projects" className='text-white hover:text-[#A186FF] transition-colors'>Projects</a>
+                            <a href="#skills" className='text-white hover:text-[#A186FF] transition-colors'>Tech Stack</a>
+                            <a href="#contact" className='text-white hover:text-[#A186FF] transition-colors'>Contact us</a>
                         </div>
                     </div>
 
                     {/* Socials Card */}
                     <div className='p-8 bg-[#A186FF] rounded-[2rem] flex flex-col justify-between h-[200px] group cursor-pointer'>
-                        <span className='text-[10px] font-bold text-black/40 uppercase tracking-widest'>Connect</span>
-                        <div className='flex gap-4'>
-                            <FaLinkedin size={24} className='text-black hover:scale-110 transition-transform' />
-                            <FaGithub size={24} className='text-black hover:scale-110 transition-transform' />
-                            <FaTwitter size={24} className='text-black hover:scale-110 transition-transform' />
-                            <FaInstagram size={24} className='text-black hover:scale-110 transition-transform' />
+                        <span className='text-[10px] font-bold text-black/40 uppercase tracking-widest'>Connect
+                            <br />
+                            <br />
+                            <span className='text-[18px] font-bold text-black uppercase tracking-[0.5rem]'> with US</span>
+                        </span>
+                        <div className='flex gap-5'>
+                            {socials.map(({ Icon, href }, i) => (
+                                <Link
+                                    key={i}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <Icon size={30} className='text-black hover:scale-110 transition-transform' />
+                                </Link>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -94,7 +110,7 @@ const Footer = () => {
                         </p>
                     </div>
 
-                    <button 
+                    <button
                         onClick={scrollToTop}
                         className='w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-[#A186FF] transition-all group'
                     >
