@@ -6,6 +6,7 @@ import { FiMail, FiUpload, FiDatabase, FiShield, FiLogOut, FiLock, FiKey } from 
 import ContactDataView from './ContactDataView';
 import ProjectDataView from './ProjectDataView';
 import ProjectData from './Project Data';
+import toast from 'react-hot-toast'
 
 type AdminTab = 'contacts' | 'upload' | 'archive';
 
@@ -37,7 +38,6 @@ export default function AdminDashboard() {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        // Replace 'your_password' with your actual secure password
         if (password === 'admin123') {
             const session = {
                 loggedIn: true,
@@ -45,16 +45,20 @@ export default function AdminDashboard() {
             };
             localStorage.setItem('admin_session', JSON.stringify(session));
             setIsLoggedIn(true);
+            toast.success("ACCESS GRANTED: WELCOME ADMIN"); // Success Toast
         } else {
-            alert("ACCESS DENIED: INVALID CREDENTIALS");
+            toast.error("ACCESS DENIED: INVALID KEY"); // Error Toast
         }
     };
 
     const handleLogout = () => {
-        if (confirm("TERMINATE SECURE SESSION?")) {
+        const proceed = toast.success("TERMINATE SECURE SESSION?");
+
+        if (proceed) {
             localStorage.removeItem('admin_session');
             setIsLoggedIn(false);
-            router.push('/'); 
+            toast.success("SESSION TERMINATED");
+            router.push('/');
         }
     };
 
@@ -65,7 +69,7 @@ export default function AdminDashboard() {
     if (!isLoggedIn) {
         return (
             <div className="h-screen bg-[#050505] flex items-center justify-center p-6">
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="w-full max-w-md bg-[#0A0A0A] border border-white/5 p-10 rounded-[2.5rem] shadow-2xl"
@@ -81,8 +85,8 @@ export default function AdminDashboard() {
                     <form onSubmit={handleLogin} className="space-y-4">
                         <div className="relative">
                             <FiKey className="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-600" />
-                            <input 
-                                type="password" 
+                            <input
+                                type="password"
                                 placeholder="ENTER ACCESS KEY"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -118,11 +122,10 @@ export default function AdminDashboard() {
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id as AdminTab)}
-                            className={`w-full flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 ${
-                                activeTab === tab.id 
-                                ? 'bg-[#C3F53C] text-black font-bold' 
+                            className={`w-full flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 ${activeTab === tab.id
+                                ? 'bg-[#C3F53C] text-black font-bold'
                                 : 'text-zinc-500 hover:text-white hover:bg-white/5'
-                            }`}
+                                }`}
                         >
                             {tab.icon}
                             <span className="text-sm uppercase tracking-wider">{tab.label}</span>
@@ -132,7 +135,7 @@ export default function AdminDashboard() {
 
                 <div className="pt-6 border-t border-white/5">
                     <button onClick={handleLogout} className="w-full flex items-center gap-3 px-5 py-4 text-zinc-600 hover:text-red-500 hover:bg-red-500/5 rounded-2xl transition-all duration-300 uppercase font-mono text-[10px] tracking-widest group">
-                        <FiLogOut className="group-hover:rotate-180 transition-transform duration-500" /> 
+                        <FiLogOut className="group-hover:rotate-180 transition-transform duration-500" />
                         Terminate_Session
                     </button>
                 </div>

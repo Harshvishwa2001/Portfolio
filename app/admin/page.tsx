@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiLock, FiMail, FiArrowRight, FiAlertCircle, FiShield } from 'react-icons/fi'
 import AdminDashboard from '../components/AdminDashboard'
+import toast from 'react-hot-toast'
 
 export default function AdminPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -31,7 +32,7 @@ export default function AdminPage() {
                 localStorage.setItem('admin_auth', 'true') // Save login state
                 setIsLoggedIn(true)
             } else {
-                setError('Invalid email or password. Access denied.')
+                setError(toast.success('Invalid email or password. Access denied.'))
             }
             setIsLoading(false)
         }, 1000)
