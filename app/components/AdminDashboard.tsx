@@ -38,7 +38,7 @@ export default function AdminDashboard() {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        if (password === 'admin123') {
+        if (password === 'Harsh@9869') {
             const session = {
                 loggedIn: true,
                 timestamp: new Date().getTime()
