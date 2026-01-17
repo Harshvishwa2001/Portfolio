@@ -25,14 +25,15 @@ export default function AdminPage() {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
         setIsLoading(true)
-        setError('')
 
         setTimeout(() => {
             if (email === 'admin@gmail.com' && password === 'Admin@123') {
                 localStorage.setItem('admin_auth', 'true') // Save login state
                 setIsLoggedIn(true)
+                toast.success("ACCESS GRANTED: WELCOME ADMIN");
             } else {
-                setError(toast.success('Invalid email or password. Access denied.'))
+                setError(('Invalid email or password. Access denied.'))
+                toast.success("Invalid email or password. Access denied.");
             }
             setIsLoading(false)
         }, 1000)
