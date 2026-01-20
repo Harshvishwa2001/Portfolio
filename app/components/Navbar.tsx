@@ -31,7 +31,7 @@ const Navbar = () => {
             <motion.div 
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
-                className={`max-w-[1100px] mx-auto flex justify-between items-center px-6 py-3 rounded-[2rem] border transition-all duration-500 ${
+                className={`max-w-[1300px] mx-auto flex justify-between items-center px-6 py-3 rounded-[2rem] border transition-all duration-500 ${
                     scrolled 
                     ? 'bg-black/60 backdrop-blur-xl border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.3)]' 
                     : 'bg-transparent border-transparent'
