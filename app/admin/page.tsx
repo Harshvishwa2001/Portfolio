@@ -27,7 +27,7 @@ export default function AdminPage() {
         setIsLoading(true)
 
         setTimeout(() => {
-            if (email === 'harsh@gmail.com' && password === 'Harsh@9869') {
+            if (email === 'harshvishwa2001@gmail.com' && password === 'Harsh@9869788464') {
                 localStorage.setItem('admin_auth', 'true') 
                 setIsLoggedIn(true)
                 toast.success("ACCESS GRANTED: WELCOME ADMIN");
